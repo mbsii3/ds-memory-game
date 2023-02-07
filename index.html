@@ -9,8 +9,16 @@
     <script defer src="app.js"></script>
 </head>
 <body>
-    <header>Memory Game: Demon Slayer Edition</header>
-    <h1>Turns Left: <span class="playerTurnsCount"></span></h1>
+    <header class="header">Memory Game: Demon Slayer Edition</header>
+    
+    <div class="message" id="win-message">Match the cards!</div>
+
+    <div class="game-info">
+        <div class="turns">Turns Left: <span class="playerTurnsCount" id="turnCount"></span></div>
+        <div class="matches">Matches: <span class="matchesCount" id="matchCount"></span></div>
+    </div>
+    
+    
     <section></section>
     <button>Play Again</button>
 

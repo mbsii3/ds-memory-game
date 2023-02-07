@@ -21,25 +21,32 @@ const getImgs = [
 
 
 const cardTable = document.querySelector('section');
-const playerTurnsCount = document.querySelector('span');
+const playerTurnsCount = document.getElementById('turnCount');
+const matchesCount = document.getElementById('matchCount');
+
 
 
 /*----- state variables -----*/
-let turns = 3;
-playerTurnsCount.textContent = turns;
+let turns;
+let matches;
+
 
 /*----- cached elements  -----*/
-const messageEl = document.querySelector('h1');
+const messageEl = document.getElementById('win-message');
 const playAgainBtn = document.querySelector('button');
 
 
 /*----- event listeners -----*/
-// playAgainBtn.addEventListener('click', init);
+playAgainBtn.addEventListener('click', init);
 
 /*----- functions -----*/
 init();
 
 function init() {
+    turns = 8;
+    playerTurnsCount.textContent = turns;
+    matches = 0;
+    matchesCount.textContent = matches;
     render();
 }
 
@@ -68,10 +75,11 @@ function renderGame() {
         cardTable.append(card);
         card.append(face);
         card.append(back);
-        
+
         card.addEventListener('click', (flipCard) => {
             card.classList.toggle('toggleCard');
             checkCards(flipCard);
+            checkResult();
         });
     });
 }
@@ -84,6 +92,8 @@ function checkCards(flipCard) {
     //Check Cards Logic
     if (toggledCards.length === 2) {
         if (toggledCards[0].getAttribute('name') === toggledCards[1].getAttribute('name')) {
+            matches++;
+            setTimeout(() => matchesCount.textContent = matches, 1000);
             toggledCards.forEach((toggledCard) => {
             toggledCard.classList.remove('toggled');
             toggledCard.style.pointerEvents = 'none';
@@ -91,15 +101,21 @@ function checkCards(flipCard) {
         } else {
             toggledCards.forEach(toggledCard =>{
                 toggledCard.classList.remove('toggled');
-                setTimeout(() => toggledCard.classList.remove('toggleCard'), 1800);
+                setTimeout(() => toggledCard.classList.remove('toggleCard'), 1000);
             });
             // Player turns count updates
             turns--
-            setTimeout(() => playerTurnsCount.textContent = turns, 1800);
-            if (turns === 0) {
-                resetCards();
-            }
+            setTimeout(() => playerTurnsCount.textContent = turns, 1000);
         }
+    }
+}
+
+function checkResult() {
+    if (turns === 0 && matches < 8) {
+        setTimeout(() => messageEl.innerText = 'You lose, try again!', 1000);
+        resetCards();
+    } else if (matches === 8 && turns > 0) {
+        setTimeout(() => messageEl.innerText = 'You Win!!', 1000);
     }
 }
 
@@ -108,15 +124,16 @@ function resetCards() {
     let faces = document.querySelectorAll('.face');
     let cards = document.querySelectorAll('.card');
     currentImgs.forEach((img, idx) => {
-        setTimeout(() => cards[idx].classList.remove('toggleCard'),1800);
+        setTimeout(() => cards[idx].classList.remove('toggleCard'), 1000);
+        cards[idx].style.pointerEvents = 'all';
+        faces[idx].src = img.imgSrc;
     });
+        // turns = 3;
+        // playerTurnsCount.textContent = turns;
 }
 
-
-
-
 // function renderButton() {
-//     playAgainBtn.style.visibility = lose ? 'visibile' : 'hidden';
+//     playAgainBtn.style.visibility = winner ? 'visible' : 'hidden';
 // }
     
 

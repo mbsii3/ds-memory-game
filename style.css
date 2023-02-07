@@ -12,6 +12,28 @@ body {
     background-color: grey;
 }
 
+.header {
+    font-size: 3em;
+}
+
+.message {
+    font-size: 2em;
+    margin: 15px;
+}
+
+.game-info {
+    display: flex;
+    font-size: 2em;
+}
+
+.turns  {
+    margin-right: 40vmin;
+}
+
+.matches {
+    margin-left: 40vmin;
+}
+
 section {
     display: grid;
     grid-template-columns: repeat(4, 26vmin);
@@ -23,7 +45,7 @@ section {
 .card {
     position: relative;
     transform-style: preserve-3d;
-    transition: all 2s ease;
+    transition: all 1s ease;
     box-shadow: rgba(0,0,0,0.2)0px 5px 15px;
 }
 
@@ -39,7 +61,7 @@ pointer-events: none;
 }
 
 .back {
-    background-color: white;
+    background-color: black;
     backface-visibility: hidden;
 }
 

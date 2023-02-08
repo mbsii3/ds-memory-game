@@ -9,44 +9,85 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: grey;
+    background-image: url('images/body\ background.jpg');
+    background-size: 100%;
+    font-family: julius sans one, sans-serif;
+}
+
+.game-container {
+    height: 100vh;
+    width: 70vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.7);
+    border: 2px solid;
+    border-color: white;
+    border-top: none;
+    border-bottom: none;
 }
 
 .header {
-    font-size: 3em;
+    margin-top: 15px;
+    font-size: 3.5em;
+    color: white;
+    font-weight: bold;
 }
 
 .message {
     font-size: 2em;
     margin: 15px;
+    color: white;
 }
 
 .game-info {
     display: flex;
-    font-size: 2em;
+    justify-content: space-between;
+    font-size: 1.5em;
+    color: white;
+    margin-bottom: 10px;
 }
 
 .turns  {
-    margin-right: 40vmin;
+    margin-right: 38vmin;
 }
 
 .matches {
-    margin-left: 40vmin;
+    margin-left: 38vmin;
 }
 
 section {
     display: grid;
-    grid-template-columns: repeat(4, 26vmin);
-    grid-template-rows: repeat(4, 16vmin);
-    grid-gap: 4vmin;
-    perspective: 800px;
+    grid-template-columns: repeat(4, 25vmin);
+    grid-template-rows: repeat(4, 15vmin);
+    grid-gap: 3vmin;
+    perspective: 1500px;
+}
+
+button {
+    height: 50px;
+    width: 100px;
+    background-color: black;
+    border: 2px solid;
+    color: white;
+    border-color: white;
+    border-radius: 15px;
+    margin-top: 30px;
+    font-family: julius sans one, sans-serif;
+    font-weight: bold;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: #d10f0f;
+    transition: .1s ease;
 }
 
 .card {
     position: relative;
+    border-radius: 20px;
     transform-style: preserve-3d;
-    transition: all 1s ease;
-    box-shadow: rgba(0,0,0,0.2)0px 5px 15px;
+    transition: all .5s ease;
 }
 
 .card:hover {
@@ -58,11 +99,18 @@ width: 100%;
 height: 100%;
 position: absolute;
 pointer-events: none;
+border-radius: 20px;
 }
 
 .back {
-    background-color: black;
+    background-color: white;
+    background-image: url(images/ds\ logo.png);
     backface-visibility: hidden;
+    border: 2px solid;
+    border-color: #d10f0f;
+    background-position: center;
+    background-size: 12vmin;
+    background-repeat: no-repeat;
 }
 
 .toggleCard {

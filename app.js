@@ -19,10 +19,14 @@ const getImgs = [
     {imgSrc: "./images/zenitsu.jpg", name: "zenitsu"}
 ];
 const cardTable = document.querySelector('section');
-const playerTurnsCount = document.getElementById('turnCount');
+const playerLivesCount = document.getElementById('livesCount');
 const matchesCount = document.getElementById('matchCount');
+const correct = new Audio('./sounds/correct.mp3');
+const incorrect = new Audio('./sounds/incorrect.mp3');
+const winner = new Audio('./sounds/winner.mp3');
+const gameOver = new Audio('./sounds/game over.mp3');
 /*----- state variables -----*/
-let turns;
+let lives;
 let matches;
 /*----- cached elements  -----*/
 const messageEl = document.getElementById('win-message');
@@ -33,8 +37,8 @@ playAgainBtn.addEventListener('click', newGame);
 init();
 
 function init() {
-    turns = 8;
-    playerTurnsCount.textContent = turns;
+    lives = 8;
+    playerLivesCount.textContent = lives;
     matches = 0;
     matchesCount.textContent = matches;
     render();
@@ -50,7 +54,6 @@ function newGame() {
 function render() {
     renderGame();
 }
-
 // Function randomizes the card images in the getImgs array
 // and generates the HTML elements for the cards and appends them to the DOM
 // checkCards function is called at the end
@@ -87,6 +90,7 @@ function checkCards(flipCard) {
     // Check Cards Logic
     if (toggledCards.length === 2) {
         if (toggledCards[0].getAttribute('name') === toggledCards[1].getAttribute('name')) {
+            correct.play();
             matches++;
             setTimeout(() => matchesCount.textContent = matches, 1000);
             toggledCards.forEach((toggledCard) => {
@@ -99,18 +103,21 @@ function checkCards(flipCard) {
                 setTimeout(() => toggledCard.classList.remove('toggleCard'), 1000);
             });
             // Player turns count updates
-            turns--
-            setTimeout(() => playerTurnsCount.textContent = turns, 1000);
+            incorrect.play();
+            lives--
+            setTimeout(() => playerLivesCount.textContent = lives, 1000);
         }
     }
 }
 // Win/Loss logic
 function checkResult() {
-    if (turns === 0 && matches < 8) {
+    if (lives === 0 && matches < 8) {
+        setTimeout(() => gameOver.play(), 1000);
         resetCards();
         cardTable.style.pointerEvents = 'none';
         setTimeout(() => messageEl.innerText = 'You lose, try again!', 1000);
-    } else if (matches === 8 && turns > 0) {
+    } else if (matches === 8 && lives > 0) {
+        setTimeout(() => winner.play(), 1000);
         cardTable.style.pointerEvents = 'none';
         setTimeout(() => messageEl.innerText = 'You Win!', 1000);
     }
@@ -141,12 +148,9 @@ function reshuffle() {
 }
 // Resets game info
 function restart() {
-    turns = 8;
+    lives = 8;
     matches = 0;
-    playerTurnsCount.textContent = turns;
+    playerLivesCount.textContent = lives;
     matchesCount.textContent = matches;
     messageEl.innerText = 'Match the cards!';
 }
-    
-
-

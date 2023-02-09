@@ -11,7 +11,7 @@ body {
     align-items: center;
     background-image: url('images/body\ background.jpg');
     background-size: 100%;
-    font-family: julius sans one, sans-serif;
+    font-family: metal mania, sans-serif;
 }
 
 .game-container {
@@ -29,7 +29,7 @@ body {
 
 .header {
     margin-top: 15px;
-    font-size: 3.5em;
+    font-size: 6vmin;
     color: white;
     font-weight: bold;
 }
@@ -48,12 +48,12 @@ body {
     margin-bottom: 10px;
 }
 
-.turns  {
-    margin-right: 38vmin;
+.lives {
+    margin-right: 43vmin;
 }
 
 .matches {
-    margin-left: 38vmin;
+    margin-left: 43vmin;
 }
 
 section {
@@ -65,15 +65,16 @@ section {
 }
 
 button {
-    height: 50px;
-    width: 100px;
+    height: 5vmin;
+    width: 10vmin;
     background-color: black;
     border: 2px solid;
     color: white;
     border-color: white;
     border-radius: 15px;
     margin-top: 30px;
-    font-family: julius sans one, sans-serif;
+    font-family: metal mania, sans-serif;
+    font-size: 15px;
     font-weight: bold;
 }
 
@@ -109,7 +110,7 @@ border-radius: 20px;
     border: 2px solid;
     border-color: #d10f0f;
     background-position: center;
-    background-size: 12vmin;
+    background-size: 11vmin;
     background-repeat: no-repeat;
 }
 

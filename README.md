@@ -4,9 +4,9 @@ This is a browser-based memory card matching game with a theme based on the popu
 
 ## About The Project
 
-![Game screenshot #1](DS Memory Game 2.jpg)
+![Game screenshot #1](./images/DS%20Memory%20Game%202.jpg)
 
-![Game screenshot- Winner page](DS Memory Game.jpg)
+![Game screenshot- Winner page](./images/DS%20Memory%20Game.jpg)
 
 I decided to develop this memory game because I felt it would provide a difficult enough challenge where I would learn as much as I could in a short one week timeframe.  I wanted to really push my knowledge of what I had learned in Unit One, so I decided I would render the HTML elements using JS rather than building them in my HTML file first.  This taught me valuable lessens about understanding the importance of scope when it comes to variables and functions in my projects.  Overall, this project was a great deal of fun to develop and I tried to be as creative with the CSS, backgrounds, and browser audio as I could.
 
